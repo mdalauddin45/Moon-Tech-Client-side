@@ -7,7 +7,9 @@ function App() {
   return (
     <div>
       <Provider store={store}>
+        {/* provider */}
         <RouterProvider router={routes} />
+        {/* consiumer */}
       </Provider>
     </div>
   );
