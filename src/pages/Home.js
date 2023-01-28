@@ -6,12 +6,12 @@ import ProductCard from "../components/ProductCard";
 const Home = () => {
   const [data, setData] = React.useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("products.json")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
 
-  const state = useSelector((state) => state);
+  // const state = useSelector((state) => state);
   // console.log(state);
 
   return (
