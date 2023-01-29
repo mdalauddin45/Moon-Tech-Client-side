@@ -1,15 +1,40 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actionTypes/actionTypes";
+import {
+  ADD_PRODUCT,
+  ADD_TO_CART,
+  LOAD_PRODUCT,
+  PRODUCT_LOADED,
+  REMOVE_FROM_CART,
+  REMOVE_PRODUCT,
+} from "../actionTypes/actionTypes";
 
-const initialstate = {
+const initialState = {
   cart: [],
+  products: [],
 };
 
-const ProductReducer = (state = initialstate, action) => {
+const productReducer = (state = initialState, action) => {
   const selectedProduct = state.cart.find(
     (product) => product._id === action.payload._id
   );
 
   switch (action.type) {
+    case LOAD_PRODUCT:
+      return {
+        ...state,
+        products: action.payload,
+      };
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        products: [...state.products, action.payload],
+      };
+    case REMOVE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter(
+          (product) => product._id !== action.payload
+        ),
+      };
     case ADD_TO_CART:
       if (selectedProduct) {
         const newCart = state.cart.filter(
@@ -46,9 +71,14 @@ const ProductReducer = (state = initialstate, action) => {
         ),
       };
 
+    case PRODUCT_LOADED:
+      return {
+        ...state,
+        products: action.payload,
+      };
     default:
       return state;
   }
 };
 
-export default ProductReducer;
+export default productReducer;
