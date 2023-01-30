@@ -42,8 +42,8 @@ const Home = () => {
   }
 
   return (
-    <div className='max-w-7xl gap-14 mx-auto my-10'>
-      <div className='mb-10 flex justify-end gap-5'>
+    <div className="max-w-7xl gap-14 mx-auto my-10">
+      <div className="mb-10 flex justify-end gap-5">
         <button
           onClick={() => dispatch(toggleStock())}
           className={`border px-3 py-2 rounded-full font-semibold ${
@@ -69,7 +69,7 @@ const Home = () => {
           Intel
         </button>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14'>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
         {content}
       </div>
     </div>
